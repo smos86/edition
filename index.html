@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- Подключение листа со стилями -->
+    <link rel="stylesheet" href="./style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.png">
+    <title>Расчёт стомости тиража визиток</title>
+</head>
+
+<body>
+    <!-- Секция для рассчётов -->
+    <section>
+        <div class="container-fluid" style="width: 100%; height: 100%;">
+            <div class="">
+                <!-- Тираж в штуках -->
+                <div class="calc">
+                    <h2 class="h2">Расчет цены тиража визиток</h2>
+                    <label for="card">Выберите тираж</label><br>
+                    <select class="form-control" name="card" id="card">
+                        <option value="0">0 шт.</option>
+                        <option value="100">100 шт.</option>
+                        <option value="500">500 шт.</option>
+                        <option value="1000">1000 шт.</option>
+                        <option value="2000">2000 шт.</option>
+                        <!-- Оптовая скидка 10% -->
+                        <option value="4500">5000 шт.</option>
+                    </select>
+                    <br>
+                    <!-- Выбор размера визиток-->
+                    <label for="format">Выберите размер</label><br>
+                    <select class="form-control" name="format" id="format">
+                        <option>Стандарт (90х50 мм)</option>
+                        <option>Евро (85х55 мм)</option>
+                    </select>
+                    <br>
+                    <!-- Выбор бумаги -->
+                    <label for="paper">Выберите бумагу</label><br>
+                    <select name="paper" id="paper" class="form-control">
+                        <!-- bumaga=стоимость за лист выбранной бумаги -->
+                        <option bumaga="6" value="Матовая бумага 300гр./кв.м">Матовая бумага 300гр./кв.м</option>
+                        <option bumaga="9" value="Мелованная глянцевая бумага 250гр./кв.м">Мелованная глянцевая бумага
+                            250гр./кв.м</option>
+                        <option bumaga="10.5" value="Белая vip 300гр./кв.м">Белая vip 300гр./кв.м</option>
+                        <option bumaga="12" value='Дизайнерская "Белый лён" 300гр./кв.м'>Дизайнерская "Белый лён"
+                            300гр./кв.м</option>
+                        <option bumaga="15" value='Дизайнерская "Металлик" 300гр./кв.м'>Дизайнерская "Металлик"
+                            300гр./кв.м</option>
+                    </select>
+                    <br>
+                    <!-- Стоимость услуги печати clpr= время + расходные материалы + аммортизация оборудования -->
+                    <label for="color">Выберите цвет печати</label><br>
+                    <select name="color" id="color" class="form-control">
+                        <option print="6" data="1" value="Односторонняя черно-белая">Односторонняя (черно-белая)
+                        </option>
+                        <option print="7" data="2" value="Двусторонняя черно-белая">Двусторонняя (черно-белая)
+                        </option>
+                        <option print="8" data="3" value="Односторонняя цветная">Односторонняя (цветная)</option>
+                        <option print="10" data="4" value="Двусторонняя цветная">Двусторонняя (цветная)</option>
+                        <option print="9" data="5" value="Цветная с лицевой, чёрно-белая с обратной стороны">Цветная
+                            с лицевой, чёрно-белая с обратной стороны</option>
+                    </select>
+                    <br>
+                    <!-- Примеры выбранного формата визиток -->
+                    <!-- Лицевая сторона -->
+                    <h3 class="h3 text-center">Пример варианта печати:</h3>
+                    <div class="row">
+                        <div class="col-sm text-center mt-2 mb-2">
+                            <p class="p1" style="font-size: 1.5rem">Лицевая сторона</p>
+                            <div class="mt-1 mb-1">
+                                <div class="pic">
+                                    <img src="./img/gray_front.jpg" alt="" id="card1">
+                                    <img src="./img/gray_front.jpg" alt="" id="card2">
+                                    <img src="./img/colored_front.jpg" alt="" id="card3">
+                                    <img src="./img/colored_front.jpg" alt="" id="card4">
+                                    <img src="./img/colored_front.jpg" alt="" id="card5">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Оборотная стороны -->
+                        <div class="col-sm text-center mt-2 mb-2">
+                            <p class="p2" style="font-size: 1.5rem">Оборотная сторона</p>
+                            <div class="mt-1 mb-1">
+                                <div class="pic">
+                                    <img src="./img/empty_back.jpg" alt="" id="card6">
+                                    <img src="./img/gray_back.jpg" alt="" id="card7">
+                                    <img src="./img/empty_back.jpg" alt="" id="card8">
+                                    <img src="./img/colored_back.jpg" alt="" id="card9">
+                                    <img src="./img/gray_back.jpg" alt="" id="card10">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Блок с итоговыми подсчётами -->
+                    <h4 class="h4 mt-3 text-center">Стоимость за тираж</h4>
+                    <p class="pr text-center" id="Rub"><span id="price"></span> руб.</p>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Оформить
+                            заказ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Копирайт -->
+    <footer class="container-fluid text-center mb-1%">©by Sergey Smogunov, 2021</footer>
+
+
+    <!-- Подключение JQuery локально -->
+    <script src="./jquery-3.6.0.js"></script>
+    <!-- Подключение листа с JS -->
+    <script src="./myscript.js"></script>
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
